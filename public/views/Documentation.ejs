@@ -1,0 +1,74 @@
+<!-- views/api-docs.ejs -->
+<% if (user) { %>
+    <%- include('./components/Header-SI') %> <!-- Corrected to remove the .ejs extension -->
+<% } else { %>
+    <%- include('./components/Header') %> <!-- Corrected to remove the .ejs extension -->
+<% } %>
+<!-- Include particles.js library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+<div class="bg-gray-900 relative overflow-hidden">
+    <div id="particles-js" class="absolute inset-0 z-1"></div> <!-- Particle container -->
+
+    <div class="absolute inset-0">
+        <!-- Background Image -->
+        <img src="/images/euphoria-theme3.png" alt="Theme Screenshot" class="w-full h-full object-cover opacity-30 blur-md transition duration-500 transform scale-100 hover:scale-105">
+    </div>
+    <div class="relative isolate px-6 pt-14 lg:px-8">
+        <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 relative z-20 text-white">
+            <div class="text-center">
+                <h1 class="text-5xl font-semibold tracking-tight sm:text-7xl animate__animated animate__fadeInDown">API Documentation</h1>
+                <p class="mt-8 text-lg font-medium sm:text-xl animate__animated animate__fadeInUp">Explore the available API endpoints and their responses.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- API Documentation Section -->
+<div class="overflow-hidden bg-gray-900 py-24 sm:py-32 shadow-2xl">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 class="text-2xl font-semibold text-white mb-4">Available API Endpoints</h2>
+
+        <div class="bg-gray-800 p-6 rounded-lg mb-6">
+            <h3 class="text-lg font-semibold text-indigo-400">GET /api/call/status</h3>
+            <p class="mt-2 text-gray-400">Receive the API Status and Version.</p>
+            <h4 class="text-gray-300 mt-4">Example Response:</h4>
+            <pre class="bg-gray-700 text-gray-200 p-4 rounded">
+{
+    "success": true,
+    "status": "online",
+    "version": "1.0.0"
+}
+            </pre>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg mb-6">
+            <h3 class="text-lg font-semibold text-indigo-400">GET /api/call/gallery</h3>
+            <p class="mt-2 text-gray-400">Retrieve all images in the user's gallery.</p>
+            <h4 class="text-gray-300 mt-4">Example Response:</h4>
+            <pre class="bg-gray-700 text-gray-200 p-4 rounded">
+{
+    "success": true,
+    "gallery": [
+        "https://euphoriatheme.uk/userID/image1.png",
+        "https://euphoriatheme.uk/userID/image2.png"
+    ]
+}
+            </pre>
+        </div>
+
+        <!-- New Section for API Token -->
+        <div class="bg-gray-800 p-6 rounded-lg mb-6">
+            <h3 class="text-lg font-semibold text-indigo-400">Getting Your API Token</h3>
+            <p class="mt-2 text-gray-400">To authenticate your requests, you need to obtain your API token. You can find your API token in the Dashboard.</p>
+            <p class="mt-2 text-gray-400">Navigate to the <a href="/dashboard" class="text-indigo-400 hover:underline">Dashboard</a> after logging in, where you will see your API token listed. Make sure to copy it and include it in the headers of your API requests.</p>
+            <h4 class="text-gray-300 mt-4">Authorization Header Example:</h4>
+            <pre class="bg-gray-700 text-gray-200 p-4 rounded">
+Authorization: "Bearer your_api_token_here"
+            </pre>
+        </div>
+
+    </div>
+</div>
+
+<%- include('./components/Footer') %> <!-- Include footer -->

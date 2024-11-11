@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= openGraphData.title %></title>
+    <!-- Favicon -->
+    <link rel="icon" href="/images/Ptero.png" type="image/png">
+    <link rel="apple-touch-icon" href="/images/Ptero.png">
+    <link rel="icon" href="/images/Ptero.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="/images/Ptero.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/images/Ptero.png" type="image/png" sizes="48x48">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom style for logo */
+        .zoom-image {
+            height: 50px; /* Set the height of the image */
+            width: auto; /* Maintain aspect ratio */
+            transform: scale(1.8); /* Initial zoom effect */
+            transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+        }
+
+        /* Zoom effect on hover */
+        .zoom-image:hover {
+            transform: scale(2.0); /* Further zoom on hover */
+        }
+    </style>
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="<%= openGraphData.title %>" />
+    <meta property="og:description" content="<%= openGraphData.description %>" />
+    <meta property="og:image" content="<%= openGraphData.image %>" />
+    <meta property="og:url" content="<%= openGraphData.url %>" />
+    <meta property="og:type" content="<%= openGraphData.type %>" />
+</head>
+<body class="bg-gray-900">
+<header class="header fixed top-0 left-0 right-0 z-50 bg-gray-900 shadow-lg">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+            <a href="/">
+                <span class="sr-only">Euphoria</span>
+                <img class="zoom-image" src="/images/Ptero.png" alt="Logo">
+            </a>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+            <a href="/documentation" class="text-sm font-semibold text-white">API Documentation</a>
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center">
+            <a href="https://discord.gg/Cus2zP4pPH" target="_blank" class="text-white mr-3"><i class="fa-brands fa-discord"></i></a>
+            <a href="/dashboard" class="text-sm font-semibold text-white mr-3">Dashboard</a>
+            <a href="/logout" class="inline-block rounded bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white shadow hover:bg-indigo-700">Log Out</a>
+        </div>
+
+        <!-- Mobile menu button with Discord icon -->
+        <div class="lg:hidden flex items-center">
+            <a href="https://discord.gg/Cus2zP4pPH" target="_blank" class="text-white mr-3"><i class="fa-brands fa-discord"></i></a>
+            <button id="mobile-menu-button" class="text-white">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Links -->
+    <div id="mobile-menu" class="hidden bg-gray-800 p-4 lg:hidden">
+        <a href="/documentation" class="block text-sm font-semibold text-white py-2">API Documentation</a>
+        <a href="/dashboard" class="block text-sm font-semibold text-white py-2">Dashboard</a>
+        <button id="logoutMobile" class="block w-full text-sm font-semibold text-white py-2 bg-indigo-600 hover:bg-indigo-700">Log Out</button>
+    </div>
+</header>
+
+<script>
+    // Toggle mobile menu
+    document.getElementById('mobile-menu-button').addEventListener('click', function () {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden'); // Toggle the visibility
+    });
+
+    // Handle logout in mobile menu
+    document.getElementById('logoutMobile').addEventListener('click', function () {
+        window.location.href = '/logout'; // Redirect to logout
+    });
+</script>
+</body>
+</html>

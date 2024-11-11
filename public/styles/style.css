@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header a {
+    transition: color 0.3s ease; /* Smooth transition for links */
+}
+
+.header a:hover {
+    color: #4f46e5; /* Change color on hover */
+}
+
+/* CSS for tilting effect */
+.product-img img {
+    transition: transform 0.5s ease, z-index 0.5s ease; /* Smooth transition for transformation and z-index */
+    position: relative; /* Ensure the image is positioned relative to its normal position */
+}
+
+.product-img img:hover {
+    transform: rotate(1deg) scale(1.05); /* Rotate and scale the image on hover */
+    animation: scrollGlow 2s infinite alternate;
+} 
+
+/* For WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    background-color: #2a2a2a; /* Dark background for the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(79, 70, 229, 1); /* Color of the scrollbar thumb */
+    border-radius: 20px; /* Rounded corners for the scrollbar */
+}
+
+/* Optional: For customizing the scrollbar when hovered */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(79, 70, 229, 0.8); /* Slightly different color on hover */
+}
+
+/* For Firefox */
+.scrollbar {
+    scrollbar-width: thin; /* Make scrollbar thinner */
+    scrollbar-color: rgba(79, 70, 229, 1) #2a2a2a; /* Thumb color and background color */
+}
+
+.api-token {
+    display: inline-block;
+    max-width: 50%; /* Ensures it does not exceed the container width */
+    overflow: hidden; /* Hide any overflow */
+    white-space: nowrap; /* Prevents the text from wrapping to a new line */
+    text-overflow: ellipsis; /* Displays '...' if text is too long */
+}
+
+.mt-8.bg-gray-800 {
+    overflow: hidden; /* Prevents content overflow */
+    position: relative; /* Required for absolute positioning if needed */
+}
+
+/* Glowing and scale transformation effect */
+@keyframes scrollGlow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(144, 137, 252, 0.5), 0 0 30px rgba(144, 137, 252, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(144, 137, 252, 0.7), 0 0 45px rgba(144, 137, 252, 0.7);
+    }
+}
+
+.scroll-glow-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin: 5%;
+}
+
+.scroll-glow-card.scrolled {
+    animation: scrollGlow 2s infinite alternate;
+    transform: scale(1.05); /* Scaling the card slightly */
+}
+
+#toast-container {
+    z-index: 9999;
+}
+
+.toast {
+    position: relative;
+    width: 300px;
+    opacity: 0;
+    animation: fadeInOut 5s ease-in-out;
+}
+
+.toast .toast-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    width: 0; /* Initially zero width */
+    background-color: #6366F1; /* Indigo color */
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+    100% { opacity: 0; }
+}
